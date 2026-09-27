@@ -2,5 +2,5 @@
 
 This is a unit for BSc Data Science and Artificial Intelligence Year 1 at Creative Computing Institute, University of Arts London.
 
-Here is the [all-in-one home page](https://red-x-silver.github.io/BSc-DSAI-Y1-DataRepresentationVisualization-2025-2026/) for this unit.
+Here is the [Moodle page](https://moodle.arts.ac.uk/course/view.php?id=90993) for this unit.
  

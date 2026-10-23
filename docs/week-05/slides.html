@@ -31,467 +31,339 @@
   <div>
     DRV👐
     <br />
-    Lecture 05
+    Lecture 07
     <br />
-    Data, Representation, Numbers, and Python & Colab Notebook Basics👁️  
+    Introduction to image data representation and visualization using Python
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
   
   <div> By the end of this lecture, we'll have learnt about:
   
-     <br /> The conceptual: 
-    <br /> - Tips from us
-     <br /> - Examples of data
-     <br /> - Introduction to representation and numeric representation
-      <br /> - Recommended artist who works with data
-    
-     <br /> The practical: 
-     <br /> - Introduction to Google Colab Notebook
-     <br /> - Python Basics
+    <br /> - how images are represented numerically in our computers 
+    <br /> - how to use Python to read and save images
+    <br /> - how to use Python to do basic image processing
    
   </div>
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
- 
-      <div> Few tips from me and Kayal!
-    <br />  - Shortcut to navigate through this web-based slides (use the page number at the end of the the URL)
-    <br />  - <a href="https://annas-archive.org/">Anna's archive</a>    
-    <br />  - Take good care of yourself in London!  
-    </div>
-  
 
-      <div> How to get support?
-    <br /> - Reach out to Kayal and me via Slack or Email 
-     <br /> - The fun of being an autodidact: resources listed on our <a href="https://moodle.arts.ac.uk/course/view.php?id=87899">Moodle Page</a>, <a href="https://www.kaggle.com/datasets"> datasets on Kaggle </a>, <a href="https://huggingface.co/spaces"> fun AI models on Hugging Face</a>, <a href="https://www.arts.ac.uk/students/library-services">UAL Library</a>, 
-    <a href="https://chat.openai.com/">ChatGPT but be careful</a>  
-  </div>
-  
-  <div> Data, representation and visualization! </div>
-
-  <div> What is data? 😶‍🌫️ </div>
-
-  <div>
-    Got a question for you: 
-     <br /> 
-    "when I think about data, I'm thinking of...?"
-  </div>
-
-    <div>
-    When I think about data, I'm thinking of...
-    <br /> 
-    - that thing I pay for as part of my monthly phone contract 😶‍🌫️
-  </div>
-
-      <div>
-    When I think about data, I'm thinking of...
-    <br /> 
-    - a spreadsheet of rows and columns, displayed within the green-ish Excel interface 🧩
-  </div>
-
-        <div>
-    When I think about data, I'm thinking of...
-    <br /> 
-    - information about me and my user behaviour on Facebook, Instagram, ChatGPT... 😎
-  </div>
-  
-
-        <div>
-    When I think about data, I'm thinking of...
-   <br />
-    - the recorded observation that scientists made from physics experiments, e.g. <a href="https://home.cern/science/accelerators/old-large-hadron-collider">the large hadron collider in CERN </a>   
-  </div>
-
-  <div>  
-  <h3>These are all data!</h3>
-  <p>In fact, they represent different perspectives about data: </p>
-  <p> - data in phone📱: digital, quantized for easy measurement (e.g. 250GB) </p>
-  <p> - data in a spreadsheet📋: structured, note that not all data can be put into rows and columns  </p>
-  <p> - data about me on social media🧃: behavioural data, include more than just numbers (e.g. the images I have uploaded)</p>
-  <p> - data from scientific experiments🔬: natural data, comes from observation </p>
-  <p> - - - <a href="https://www.youtube.com/watch?v=8RF09G8Ymqg">and I'm still gaining new understanding about data... </a>  </p>
-  </div>
-
- <div> <a href="https://resources.data.gov/glossary/data-vs.-information/"> How about data vs. information - what is the difference? </a>  </div>
-  
-  
-  
-   <div> What can people do with data? 😶‍🌫️ 
-     <br />
-   - In most cases people have some questions or hypothesises in mind, and then go discover the related patterns from the data to answer the questions!
-      <br />
-   - - <a href="https://moodle.arts.ac.uk/course/section.php?id=573047">("how to form a research question" on page52-55 in Kayal's slides from week 4)</a>  
-      <br />
-    - The discovered patterns can be analyzed, visualized and present to others.   
-   </div>
-
-   <div> Let's browse this data science platform called <a href="https://www.kaggle.com/"> Kaggle </a> to see what data there are and what questions people try to ask from data </div>
-  
-
-
-  <div> Artist for today: <a href="https://www.youtube.com/watch?v=cywFvcRR-QI">Ryoji Ikeda</a>  
-  <br /> - Keywords: data, audio-visual, <a href="https://derivative.ca/">touchdesigner</a>
- <br /> - - <a href="https://www.youtube.com/watch?v=ICb0EWOUuA8">Ongoing exhibition "data-cosm[n°1]"</a> at <a href="https://www.180studios.com/data-cosm">180 studios</a> till 21st December 2025
+  <div> 
+        🕶️ Image - the history
+ <br /> - let's start with the evolution of image capture technology.
     
-  </div>
-
-
-  
-  <div> any questions so far? </div>
-
-
-   <div> Let's move on to the next keyword in our unit title: 
-      <br />
-     what is representation?
    </div>
 
-  <div> Quick Quiz 00: What is apple? 🍎  </div>
-  
-  <div> Quick Quiz 01
-  <br /> 
-  How do you distinguish apple as a fruit vs. Apple as a tech company? 
-  </div>
-  
-  <div> 
-    Here are some possible representations:
-  <br /> 
-    - is it edible or not?
-  <br /> 
-    - is it a fruit?
-   <br />
-    - is the word spelled with an upper cased "A"? 🤪    
-  </div>
-  
-  <div> 
-    Quick Quiz 02
-    <br />    
-    How do you distinguish apple vs. pear?  🍎🍏🍐       
-  </div>
-      
-  <div> 
-    How do you distinguish apple vs. pear?  🍎🍏🍐
-    <br />   
-    Do any of our previous representations work?
-    <br /> 
-    - is it edible or not?
-    <br /> 
-    - is it a fruit?
-    <br />
-    - is the word spelled with an upper cased "A"? 🤪    
-  </div>
-  
-  <div> 
-    No but here are some possible representations:
-    <br /> 
-    - their shapes
-    <br />
-    - their tastes   
-  </div>
-  
-  
-  <div> 
-    Good representation simplifies our task!
-    <br /> 
-    To excel at pattern discovery from data ~= To find a good representation
-  </div>
-  
-  <div> 
-   🌪️
-   <br /> 
-   <a href="https://www.theguardian.com/lifeandstyle/wordofmouth/2012/may/21/the-papple-tasted-and-tested">Meet papple</a>
-  </div>
-  
-  <div> 
-   Representation can be contextual.
-   <br /> 
-   Depends on the problem context, different tasks may have different efficient representations for the same objects.
-  </div>
-  
-  
-  <div> Takeaway messages on representation:
-     <br /> 
-    - It can be descriptive and capture some characteristics.
-     <br /> 
-    - It can be perspective and partial. 
-     <br /> 
-    - It can be contextual where "good" ones are task-dependent.
-  </div>
-
-  
-
-  <div>     
-       BTW here are some representation of me
-                  <br /> 
-                
-                <a href="xiaowan-yi.com">xiaowan yi</a>: sh-iao one e
-
-                <br />
-                
-                - I was born in Chengdu, China. My city is famous for panda 🐼, taoism ☯️ and spicy food 🌶️.
-                     <br /> 
-                - I live in Surrey Quays now.
-                 <br /> 
-                
-- I'm completing my PhD research in AI&Music at QMUL.
-  <br /> 
-- I make sound and you can find some of my works <a href="https://vimeo.com/user65401583">here</a>.
-    <br /> 
-- I play drums 🥁 for electronic and groovy music.
-  </div>
-  <div> any questions so far? </div>
-
-
-  <div> Till now we have been using English words to describe representations. 📙
-     <br /> 
-    How about using machine-readable words (numbers) to represent objects, concepts, etc.? 🤖
-  </div>
-  
-  
-  <div> Numbers and Numeric representation </div>
-  
-  <div> 
-     What do we use (real) numbers for?
-  </div>
-  
-  <div> 
-    - To count things
-     <br />    
-    - To measure things
-      <br />   
-    - To label things
-      <br />   
-    - ...
-  </div>
-  
-  <div> 
-   <a href="https://www.youtube.com/shorts/jh0aYUlmsF0">007</a>        
-  </div>
-  
-  
-  <div> 
-  A side note:
-  <br /> 
-  - Do we really have numbers in the real world? Have you seen numbers walking on the street on their own?
-  </div>
-  
-  <div> 
-  A side note:
-  <br /> 
-  Have you seen numbers walking on the street on their own?
-  <br />
-  - Numbers are often used with contexts. To connect numbers with reality, we always need interpretation guide(e.g. a protocol, unit, etc.) when using numbers in real life. 
-  <br />
-  - How to interpret numbers produced by computer programms is a helpful skill you can get from this unit.
-  </div>
-  
   <div>
-   🤗 My number of chaos:
-   <br />     
-  -858993460                 
-  </div>
-  
-  <div> 
-  Why are numbers important?
-     <br />    
-    - All digital systems have to use numbers and numbers only to store and process data. It's the digital system, as opposed to the analog system, that is almost everywhere nowadays - phones, computers, servers, your smart glasses in the future, etc.
-    <br /> 
-    - Numbers can introduce maths, which is our <a href="https://www.youtube.com/watch?v=nmvkhLz8t7I">DOMAIN EXPANSION 💥</a>
-      <br />   
-  </div>
-  
-  <div> Recap on "data modality"</div>
+  <h2>The Evolution of Photography</h2>
+  <p>From light-sensitive plates to digital sensors — a journey through how images became data.</p>
+</div>
 
-  <div> 
-    Data modalities🕶️
-     <br />    
-    Information that we can gather from the world and store in digital systems as "data", are mainly from four modalities:
-      <br />   
-    - 👁️Image (picture, video)
-      <br />   
-    - 📝Text (written language)
-      <br />   
-    - 🎵Audio (music, speech)
-      <br />   
-    - 🧩Tabular(this week's weather in degree celsius, everyone's birthday in this class, sensor data, etc.)
-      <br />  
-      Can you think of any information that is not from the four categories?
-  </div>
-  
-    <div> 
-    🧠 My mind-blowing moment:
-      <br />   
-    - Information from any of those three categories (image, text and audio) can be digitized / numberified aka be represented by just a bunch of numbers.
-  </div>
-  
-  <div> 
-    Data modalities🕶️
-     <br />    
-    - Each data modality has its own characteristics and challenges for representation, processing and analysis.
-      <br />
-     - We structure our next few lectures based on the different data modalities, each week focusing on one modality (with a few exceptions).
-      <br />
-  </div>
-
-    <div>
-      🕶️ Data modalities covered in the weeks to come:
-      <br />
-    - Week 6: Tabular data, represented and visualized with Python
-    <br /> 
-    - Week 7: Image data, represented and visualized with Python 
-    <br /> 
-    - Week 8: Text data, represented and visualized with Python
-    <br /> 
-    - Week 9: Audio data, represented and visualized with Python
-  </div>
-
- <div> What is Python? 🐍
-   <br /> 
- - Python is a versatile, high-level, and interpreted programming language known for its simple syntax, making it easy to read and learn.
- </div>
-
-   <div> What can we do with Python? 🐍
-   <br /> 
- - Python is a general-purpose language used to create a range of applications, including data science, AI development, software and web development, and more.
-   </div>
-
-     <div> Have you used Python before? 🐍
-   <br /> 
- - No worries if not! Let's start from scratch ;)
-   </div>
-
-     <div> With Python being the programming language, 
-   <br /> 
- - we need an <a href="https://www.youtube.com/watch?v=4Q3tw7sc1ZA">IDE</a>, a place to write and run code with.
-   </div> 
-  
-  <div> Today we will use "Google Colab Notebook" for writing and running Python code. 
-   <br /> 
- - It is a web-based IDE with NICE features! 
-   </div>
-  
- <div>
-    ✋Next, we are going to:
-    <br />
-    - take our first look at the google colab notebook!
-    <br />
-    - learn some very simple python basics!
-  </div>
-
-  <div>
-    <a href="https://colab.research.google.com/drive/1czJaQi4ng3xa7pCcemHjyq2qCQEKIvGO?usp=sharing"> A prepared google
-      colab notebook </a>
-    <br /> 1. click on the link and open this google colab notebook
-  </div>
-
-  <div class='layout' style='grid-template-rows:75% 25%;'>
-    <img src='https://cdn.glitch.global/60e0bb7c-c728-41a2-965e-d0ee626232b0/notebook1.png?v=1697479338383' />
-    <div> 2. Open it in playground or save a copy to your google drive (recommended) </div>
-  </div>
-
-
-  <div>
-    Demystify google colab notebook
-    <br />
-    Two types of cells ✌️
-    <br /> - Text cell
-    <br /> -- It is for passing information to other people reading the notebook.
-    <br /> -- just like comment in code, but with a better layout.
-    <br /> - Code cell:
-    <br /> -- It is the actual programming part.
-    <br /> -- It has a play button at the top left corner. ▶️
-  </div>
-
-  <div class='layout' style='grid-template-rows:75% 25%;'>
-    <img src='https://cdn.glitch.global/60e0bb7c-c728-41a2-965e-d0ee626232b0/code_cell.png?v=1697637447226' />
-    <div> Without explaining what the code is doing, here is a screenshot of a code cell and its output </div>
-  </div>
-
-  <div> How would you distinguish a code cell from a text cell? </div>
-
-  <div> How would you distinguish a code cell from a text cell?
-    <br /> - Code cells have grey-ish background.
-    <br /> - Code cells have run buttons at the top left corner when you hover over.
-
-  </div>
-
-  <div>
-    Let's take a look at the notebook!
-    <br />
-
-    <br /> - 1. Make sure you have saved a copy to your GDrive or opened in playground.
-    <br /> - 2. Read all text cells and code cells one by one.
-    <br /> - 3. Run all code cells and don't forget to read the comments in code cells.
-    <br /> - 4. Ignore stuff after the text "This is the end of week 4"
-
-  </div>
-
-  <div> Little tasks 🌶️🌶️:
-    <br /> - Add a text cell at the beginning of notebook and write down your name and your mood of the day 😈
-    <br /> - Add a code cell below that text cell and write two lines of code:
-    <br /> -- 1. Create a variable named "greetings" and assign a string value "bello" to it
-    <br /> -- 2. Print the variable greetings using print(greetings)
-    <br /> -- 3. Run the cell!!!
-  </div>
-
-
-  <div> That's quite a lot, congrats! 🎉 </div>
-
-
-  <div> Now let's advance to <a href="https://colab.research.google.com/drive/1ynS6VfkIWeRHpE_twvm-SnLUt__OZV02?usp=sharing"> the next notebook
-      with python basics 01 </a>
-  </div>
-
-
-
-  <div> - Let's take a look at the notebook cell-by-cell till "Functions (week 6)"(excluded)
-    <br /> - Don't forget to make a copy to your GDirve 🎉
-    <br /> - We are not expected to memorise the syntax.
-    <br /> - The goal is to familiarise ourselves with the concept of:
-    <br /> -- basic arithmetic in python 🧮
-    <br /> -- lists in python 🧺
-    <br /> -- strings in python 🔤
-    <br /> -- conditionals in python ❓
-    <br /> -- loops in python 🌀
-
-  </div>
  
 
+  <div>
+  <h3>📜 Early Beginnings (1820s–1830s)</h3>
+  <ul>
+    <li>Roots of photography trace back to the <b>camera obscura</b> and experiments with light-sensitive chemicals.</li>
+    <li>In <b>1826–1827</b>, Joseph Nicéphore Niépce created the first successful photograph, the <b>heliograph</b>.</li>
+    <li>Used <b>bitumen-coated pewter plates</b> and required very long exposure times.</li>
+    <li><a href="https://cool.culturalheritage.org/byorg/abbey/an/an26/an26-3/an26-307.html"> The first photograph - View from the Window at Le Gras</a> </li> 
+  </ul>
+  <br />
+  <b>Technique:</b> “Bitumen on glass” — primitive yet revolutionary image capture.
+</div>
+
+  <div>
+  <h3>📷 Daguerreotype (1839)</h3>
+  <ul>
+    <li><b>Louis Daguerre</b> perfected a new process using <b>silver-coated copper plates</b>.</li>
+    <li>Produced highly detailed, clear images with shorter exposure times.</li>
+    <li>First <b>commercially successful</b> photographic method.</li>
+    <li><a href="https://www.youtube.com/watch?v=DAPgdo5H7ZY">A video demo of Daguerreotype</a></li>
+  </ul>
+  <br />
+  <b>Impact:</b> Made personal portraiture possible — an early democratization of photography.
+</div>
+
+  <div>
+  <h3>🎞️ Film Roll and Kodak (1888)</h3>
+  <ul>
+    <li><b>George Eastman</b> introduced the <b>Kodak camera</b> with roll film.</li>
+    <li>Replaced fragile glass plates with <b>flexible celluloid film</b>.</li>
+    <li>Enabled multiple exposures on a single roll — photography became portable and affordable.</li>
+  </ul>
+  <br />
+  <b>Slogan:</b>  <a href="https://www.youtube.com/watch?v=k-a0EFhr3vE">“You press the button, we do the rest.”</a>
+</div>
+<div>
+  <h3>🌈 Color Photography (1907–1935)</h3>
+  <ul> 
+    <li><b>1907:</b> Lumière brothers introduced <a href="https://www.youtube.com/watch?v=lVOU5w8tSXs">Autochrome plates</a> — first practical color process.</li>
+    <li><b>1935:</b> Kodak launched <a href="https://www.youtube.com/watch?v=_xTF83HqrXI">Kodachrome film</a>, making color widely accessible. A <a href="https://www.youtube.com/watch?v=J_RTnd3Smy8">demo video.</a></li> h
+    <li>Color revolutionized journalism, art, and everyday documentation.</li>  
+  </ul>
+</div>
+
+  <div>
+  <h3>📽️ The Golden Age of Film (1930s–1950s)</h3>
+  <ul>
+    <li>Advancements in <b>film emulsions</b> and <b>camera design</b> led to rapid growth.</li>
+    <li>Hollywood embraced film for motion pictures; photography became mass culture.</li>
+    <li>Iconic photographers like <a href="https://www.anseladams.com/">Ansel Adams</a> and <a href="https://www.icp.org/browse/archive/constituents/dorothea-lange">Dorothea Lange</a> shaped documentary and artistic photography.</li>
+  </ul>
+</div>
+
+
+  <div>
+  <h3>💻 Digital Shift (1990s–2000s)</h3>
+  <ul>
+    <li><b>Digital sensors</b> replaced chemical film.</li>
+    <li>Images stored as <b>pixel data</b> — arrays of numeric values representing light intensity and color. (More on this later)</li>
+    <li>Instant feedback, lower cost, and ease of editing - global adoption!</li>
+  </ul>
+  <br />
+  <b>Impact:</b> Photography became a core digital data source — a bridge to computer vision.
+</div>
+
+  <div>
+  <h3>📸 Revival and Niche Interest (2010s–Present)</h3>
+  <ul>
+    <li>Film photography experiences a <b>resurgence</b> among artists and enthusiasts.</li>
+    <li>Valued for its <b>aesthetic qualities</b>, <b>grain texture</b>, and <b>tactile process</b>.</li>
+    <li>Companies continue to produce film stock and analog cameras for niche markets.</li>
+  </ul>
+  <br />
+  <b>Trend:</b> Blending analog craft with digital editing and sharing.
+</div>
+
+  <div>
+  <h3>🧠 From Film to Data</h3>
+  <ul>
+    <li>Transition from <b>chemical light capture</b> → <b>numerical light capture</b>.</li>
+    <li>Modern digital images = <b>2D matrices</b> of pixel values.</li>
+  </ul>
+</div>
+
+<div>
+  <h3>What is a digital image?</h3>
+  <ul>
+    <li>A 2D array (matrix) of pixel intensity values (more on these values later)</li>
+    <li>Each pixel represents light intensity at a specific spatial location</li>
+    <li>Images can be grayscale or color (multi-channel)</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Digital Image Representation - the dimensions</h3>
+  <ul>
+    <li>Spatial resolution → number of pixels (e.g. 1920×1080)</li>
+    <li>Bit depth → number of bits per pixel (e.g. 8-bit, 24-bit)</li>
+    <li>Color depth → how many color channels (1 for grayscale, 3 for RGB)</li>
+  </ul>
+</div>
+
+   <div>
+  But what are the numbers in a digital image? What are "pixel intensity values"?
+  <br />
+  - They are numerical data that describe a single pixel's brightness or color or transparency within a digital image, depending on what color model is used.
+</div>
+
+  <div>
+  <h3>RGB Color Model</h3>
+  <ul>
+    <li>Each pixel = 3 values (Red, Green, Blue)</li>
+    <li>Colors are formed by mixing intensities of each channel</li>
+    <li>Example: (255, 0, 0) → pure red</li>
+  </ul>
+  <br />
+  <b>The actual shape of a RGB-colored image:</b> a 3D array → (height, width, 3)
+</div>
+
+<div>
+  <h3>RGBA Model</h3>
+  <ul>
+    <li>Extension of RGB with Alpha channel for transparency</li>
+    <li>(R, G, B, A), where A controls opacity (0=transparent, 255=opaque)</li>
+  </ul>
+</div>
+
+<div>
+Let's play with different color models <a href="https://www.csfieldguide.org.nz/en/chapters/data-representation/images-and-colours/">here</a>!
+</div>
+  
+
   <div> 
-    🕶️ Homework
-      <br />
-    - Explore <a href="https://www.kaggle.com/datasets"> datasets on Kaggle </a>, recommend me your fav 2 datasets (drop me a message on Slack ;)!
-    <br />
-    - Preview week 06 content on the "Python basics 01" Google colab notebook.
-
-  </div>
-
+    ✋ We can represent and visualize image data using Python with help from these Python libraries:
+    <br /> - <a href="https://pypi.org/project/pillow/">Pillow</a> for reading images into numbers, image processing and file saving.
+        <br /> - <a href="https://numpy.org/">Numpy</a> for handling numbers.
+       <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for visualizations.
+      <br /> - <a href="https://github.com/opencv/opencv">opencv</a> for more complex image processing.
+   </div>
 
   <div> 
-    🕶️ Let's walk through
-      <br />
-     the <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559494"> Detailed Final Submission document </a> on Moodle, to get you warmed up for the final assessment 😎
-  </div>
+        Creative examples of image data visualization
+  <p> - Most of the open public image datasets are from computer vision research which is a field of artificial intelligence (AI) that enables computers to interpret and understand the visual world (you'll explore these in the future units!)</p>
+    <ul>
+    <li> <a href="https://navigu.net/#imagenet">An image dataset browser</a>  </li> (ImageNet is a benchmark computer vision dataset. More datasets can be found in the browser's menu.)
+    <li> <a href="https://exposing.ai/datasets/">exposing.ai</a> which examines the content and the usage of public image datasets.</li>
+  </ul>
+     </div>
+  
+
+    <div> 
+   ✋Hands-on - let's write some code together!
+     <br /> - Open a new folder in VS Code.
+       <br /> - create a new .ipynb file and open it in VS code!
+      <br /> - Find an image (local or from the internet) and drop it into the working folder!
+      <br /> - Create a virtual python environment and activate it. (you can also re-use the one from last week!)
+      <br /> - pip install numpy, pillow, matplotlib and opencv-python accordingly.
+      
+   </div>
+
+  <div>
+  <h3>Loading Images in Python</h3>
+  <pre><code>
+from PIL import Image
+img = Image.open("example.jpg")
+img.show()
+  </code></pre>
+  <ul>
+    <li>Pillow (PIL fork) is great for basic image handling</li>
+    <li>Use <code>numpy.array(img)</code> to convert to a NumPy array</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Image as a NumPy Array</h3>
+  <pre><code>
+import numpy as np
+arr = np.array(img)
+print(arr.shape, arr.dtype)
+  </code></pre>
+  <b>Example output:</b> (256, 256, 3) uint8  
+  → 256×256 pixels, 3 color channels, each number is an 8-bit unsigned integer.
+</div>
+
+  <div>
+  <h3>Visualizing Images with Matplotlib</h3>
+  <pre><code>
+import matplotlib.pyplot as plt
+plt.imshow(arr)
+plt.axis('off')
+plt.show()
+  </code></pre>
+  <b>Tip:</b> Matplotlib automatically scales pixel values and handles RGB correctly.
+</div>
+
+  <div>
+  <h3>Grayscale Conversion</h3>
+  <pre><code>
+gray = img.convert('L')
+plt.imshow(gray, cmap='gray')
+plt.axis('off')
+plt.show()
+  </code></pre>
+  <b>‘L’ mode:</b> 8-bit pixels, black and white
+</div>
+
+  <div>
+  <h3>Splitting Color Channels</h3>
+  <pre><code>
+r, g, b = img.split()
+plt.imshow(r, cmap='Reds')
+  </code></pre>
+  <ul>
+    <li>Helps visualize color contribution per channel</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Pixel Statistics</h3>
+  <pre><code>
+print("Min:", arr.min(), "Max:", arr.max())
+print("Mean:", arr.mean())
+  </code></pre>
+  <ul>
+    <li>Useful for image normalization, thresholding, or analysis</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Basic Image Transformations</h3>
+  <pre><code>
+img_rot = img.rotate(45)
+img_flip = img.transpose(Image.FLIP_LEFT_RIGHT)
+  </code></pre>
+  <ul>
+    <li>Rotation, flipping, cropping are common preprocessing steps</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Visualization Techniques</h3>
+  <ul>
+    <li>Side-by-side comparisons using subplots</li>
+    <li>Color histograms for RGB intensity distribution</li>
+    <li>Heatmaps for attention or saliency visualization</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Plotting Color Histograms</h3>
+  <pre><code>
+for i, color in enumerate(['r','g','b']):
+    plt.hist(arr[:,:,i].ravel(), bins=256, color=color, alpha=0.5)
+plt.show()
+  </code></pre>
+</div>
+
+
+  <div>
+  <h3>OpenCV for Image Analysis</h3>
+  <ul>
+    <li>More advanced operations: edge detection, filters, contours</li>
+  </ul>
+  <pre><code>
+import cv2
+edges = cv2.Canny(arr, 100, 200)
+plt.imshow(edges, cmap='gray')
+  </code></pre>
+</div>
+
+  <div>
+  <h3>Visualizing Filters and Edges</h3>
+  <ul>
+    <li>Helps understand feature extraction in vision models</li>
+    <li>Examples: Sobel, Laplacian, Gaussian blur (Google these and try the code!)</li>
+  </ul>
+</div>
+
+  
+<div>
+  <h3>Hands-On Practice</h3>
+  <ul>
+    <li>Load an image of your choice</li>
+    <li>Convert to grayscale and plot histogram</li>
+    <li>Apply edge detection and visualize results</li>
+  </ul>
+</div>
+
+
+  
   
     <div> 
     🕶️ What we have learnt today:
       <br />
-    - Data:
-       <br /> - - can be structured or unstructured
-        <br /> - - from various domains
-       <br /> - - contain information and/or answers to your research questions      
+    - How to represent digital images using numbers
+       <br /> - - RGB, RGBA, Greyscale
     <br />
-    - Representation: descriptive, perspective and contextual (task-dependent)
-    <br />
-    - Numeric representation: use numbers to represent
-    <br />
-    - Ryoji Ikeda
-    <br />
-    - Hands-on: introduction to Google Colab Notebook
-    <br />
-    - Hands-on: introduction to Python basics
-  </div>
-  
+    - ✋Hands-on project with Python: create a python environment AGAIN
+ <br />
+   - ✋Hands-on project with Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a> for image I/O and simple processing
+
+    </div>
+ 
   <div> 
     We'll see you next Tuesday same time and same place!
   </div>

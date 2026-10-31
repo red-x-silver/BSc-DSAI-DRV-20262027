@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,339 +32,237 @@
     <br />
     Lecture 07
     <br />
-    Introduction to image data representation and visualization using Python
+    Introduction to audio data representation and visualization using Python
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
   
   <div> By the end of this lecture, we'll have learnt about:
   
-    <br /> - how images are represented numerically in our computers 
-    <br /> - how to use Python to read and save images
-    <br /> - how to use Python to do basic image processing
+    <br /> - how to represent audio numerically and visually
+
+    <br /> - how to use Python to represent and visualize audio data, with help from some libraries!
    
+  </div>
+
+  <div>📣ANNOUNCEMENT
+  <br /> - Guest lecture next week from this cool artist <a href="https://malouvanderveld.com/">Malou van der Veld</a>
+  <br /> - We'll start at 14:00 next Tuesday, let's be on time ;)  
   </div>
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
-
-
-  <div> 
-        🕶️ Image - the history
- <br /> - let's start with the evolution of image capture technology.
-    
-   </div>
-
-  <div>
-  <h2>The Evolution of Photography</h2>
-  <p>From light-sensitive plates to digital sensors — a journey through how images became data.</p>
-</div>
-
  
-
   <div>
-  <h3>📜 Early Beginnings (1820s–1830s)</h3>
-  <ul>
-    <li>Roots of photography trace back to the <b>camera obscura</b> and experiments with light-sensitive chemicals.</li>
-    <li>In <b>1826–1827</b>, Joseph Nicéphore Niépce created the first successful photograph, the <b>heliograph</b>.</li>
-    <li>Used <b>bitumen-coated pewter plates</b> and required very long exposure times.</li>
-    <li><a href="https://cool.culturalheritage.org/byorg/abbey/an/an26/an26-3/an26-307.html"> The first photograph - View from the Window at Le Gras</a> </li> 
-  </ul>
-  <br />
-  <b>Technique:</b> “Bitumen on glass” — primitive yet revolutionary image capture.
+  <h3>What is audio?🔈 </h3>
+  <p>Sound is the physical vibration that travels through a medium like air. </p>
+  <p>Audio refers to the electronic recording, transmission, or reproduction of that sound. </p>
+  <p>Example of audio: recorded/streamed speech, music, environment sound, etc. how about when someone says <a href="https://www.youtube.com/watch?v=1UnIDL-eHOs">OK</a>? </p>
 </div>
-
-  <div>
-  <h3>📷 Daguerreotype (1839)</h3>
-  <ul>
-    <li><b>Louis Daguerre</b> perfected a new process using <b>silver-coated copper plates</b>.</li>
-    <li>Produced highly detailed, clear images with shorter exposure times.</li>
-    <li>First <b>commercially successful</b> photographic method.</li>
-    <li><a href="https://www.youtube.com/watch?v=DAPgdo5H7ZY">A video demo of Daguerreotype</a></li>
-  </ul>
-  <br />
-  <b>Impact:</b> Made personal portraiture possible — an early democratization of photography.
-</div>
-
-  <div>
-  <h3>🎞️ Film Roll and Kodak (1888)</h3>
-  <ul>
-    <li><b>George Eastman</b> introduced the <b>Kodak camera</b> with roll film.</li>
-    <li>Replaced fragile glass plates with <b>flexible celluloid film</b>.</li>
-    <li>Enabled multiple exposures on a single roll — photography became portable and affordable.</li>
-  </ul>
-  <br />
-  <b>Slogan:</b>  <a href="https://www.youtube.com/watch?v=k-a0EFhr3vE">“You press the button, we do the rest.”</a>
-</div>
-<div>
-  <h3>🌈 Color Photography (1907–1935)</h3>
-  <ul> 
-    <li><b>1907:</b> Lumière brothers introduced <a href="https://www.youtube.com/watch?v=lVOU5w8tSXs">Autochrome plates</a> — first practical color process.</li>
-    <li><b>1935:</b> Kodak launched <a href="https://www.youtube.com/watch?v=_xTF83HqrXI">Kodachrome film</a>, making color widely accessible. A <a href="https://www.youtube.com/watch?v=J_RTnd3Smy8">demo video.</a></li> h
-    <li>Color revolutionized journalism, art, and everyday documentation.</li>  
-  </ul>
-</div>
-
-  <div>
-  <h3>📽️ The Golden Age of Film (1930s–1950s)</h3>
-  <ul>
-    <li>Advancements in <b>film emulsions</b> and <b>camera design</b> led to rapid growth.</li>
-    <li>Hollywood embraced film for motion pictures; photography became mass culture.</li>
-    <li>Iconic photographers like <a href="https://www.anseladams.com/">Ansel Adams</a> and <a href="https://www.icp.org/browse/archive/constituents/dorothea-lange">Dorothea Lange</a> shaped documentary and artistic photography.</li>
-  </ul>
-</div>
-
-
-  <div>
-  <h3>💻 Digital Shift (1990s–2000s)</h3>
-  <ul>
-    <li><b>Digital sensors</b> replaced chemical film.</li>
-    <li>Images stored as <b>pixel data</b> — arrays of numeric values representing light intensity and color. (More on this later)</li>
-    <li>Instant feedback, lower cost, and ease of editing - global adoption!</li>
-  </ul>
-  <br />
-  <b>Impact:</b> Photography became a core digital data source — a bridge to computer vision.
-</div>
-
-  <div>
-  <h3>📸 Revival and Niche Interest (2010s–Present)</h3>
-  <ul>
-    <li>Film photography experiences a <b>resurgence</b> among artists and enthusiasts.</li>
-    <li>Valued for its <b>aesthetic qualities</b>, <b>grain texture</b>, and <b>tactile process</b>.</li>
-    <li>Companies continue to produce film stock and analog cameras for niche markets.</li>
-  </ul>
-  <br />
-  <b>Trend:</b> Blending analog craft with digital editing and sharing.
-</div>
-
-  <div>
-  <h3>🧠 From Film to Data</h3>
-  <ul>
-    <li>Transition from <b>chemical light capture</b> → <b>numerical light capture</b>.</li>
-    <li>Modern digital images = <b>2D matrices</b> of pixel values.</li>
-  </ul>
-</div>
-
-<div>
-  <h3>What is a digital image?</h3>
-  <ul>
-    <li>A 2D array (matrix) of pixel intensity values (more on these values later)</li>
-    <li>Each pixel represents light intensity at a specific spatial location</li>
-    <li>Images can be grayscale or color (multi-channel)</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Digital Image Representation - the dimensions</h3>
-  <ul>
-    <li>Spatial resolution → number of pixels (e.g. 1920×1080)</li>
-    <li>Bit depth → number of bits per pixel (e.g. 8-bit, 24-bit)</li>
-    <li>Color depth → how many color channels (1 for grayscale, 3 for RGB)</li>
-  </ul>
+  
+  <div>Some examples of audio datasets
+  <br /> - <a href="https://zenodo.org/records/3967852">A dataset of music loops </a>
+  <br /> - <a href="https://research.google.com/audioset/">A dataset of audio events </a>
+  <br /> - <a href="https://www.kaggle.com/datasets/mathurinache/the-lj-speech-dataset">A dataset with speech recordings</a>
+  <br /> - Find more at<a href="https://github.com/jim-schwoebel/voice_datasets?tab=readme-ov-file">this comprehensive list of open-source audio datasets </a>
+  </div>
+  
+ <div>
+  <h3>What is sound? Dive deeper!</h3>
+  <p>Sound is the physical vibration that propagates through medium (e.g. air) as pressure waves.</p>
+  <p> - <a href="https://www.youtube.com/watch?v=QBYz82nS_xk">A YTB tutorial on sound</a>(DIY and well-made) </p>
 </div>
 
    <div>
-  But what are the numbers in a digital image? What are "pixel intensity values"?
-  <br />
-  - They are numerical data that describe a single pixel's brightness or color or transparency within a digital image, depending on what color model is used.
-</div>
-
-  <div>
-  <h3>RGB Color Model</h3>
-  <ul>
-    <li>Each pixel = 3 values (Red, Green, Blue)</li>
-    <li>Colors are formed by mixing intensities of each channel</li>
-    <li>Example: (255, 0, 0) → pure red</li>
-  </ul>
-  <br />
-  <b>The actual shape of a RGB-colored image:</b> a 3D array → (height, width, 3)
+  <p>Like images and texts, to be able to do all things with audio in computer including reading, editting, processing, generating, etc., </p>
+  <p> firstly we need to represent audio using numbers (aka digital representation)! </p>
 </div>
 
 <div>
-  <h3>RGBA Model</h3>
+  <h3>Digital Audio Representation</h3>
+  <p>How can we use numbers to represent the continuous WAVE of sound? 🌊 </p>
+  <p>We sample it! 📝 </p>
+  <p>Sampling - the process of converting analog sound waves into a digital format by measuring the amplitude (loudness) of the sound wave at regular intervals. </p>
+   <p> - Just like taking notes at regular intervals when observing the wave📝 </p>
+  <p>Digital audio is a sequence of samples (numbers) representing the amplitude of sound over time.</p>
+  <p>Two main parameters for the sampling process:</p>
   <ul>
-    <li>Extension of RGB with Alpha channel for transparency</li>
-    <li>(R, G, B, A), where A controls opacity (0=transparent, 255=opaque)</li>
+    <li><b>Sampling Rate (Hz):</b> how many samples per second (e.g., 44.1 kHz)</li>
+    <li><b>Bit Depth:</b> how many bits per sample (e.g., 16-bit = 65,536 levels)</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Raw Waveform</h3>
+  <p>The waveform (the discrete sequence of samples in digital audio) is the most basic representation of audio.</p>
+  <p>It captures amplitude vs time.</p>
+  <p>Example: A 1-second 44.1 kHz mono clip = 44,100 numbers.</p>
+</div>
+
+
+<div>
+  <h3>Visualizing a Waveform</h3>
+  <p>We can plot the waveform as amplitude vs time to observe loudness and shape.</p>
+ <p> - hands-on practice later</p>
+</div>
+
+
+<div>
+  <h3>Limitations of the Raw Waveform</h3>
+  <ul>
+    <li>High dimensional (many samples per second)</li>
+    <li>Hard to interpret directly - what can we read from amplitudes seperated apart by 1/44100th second? </li>
+    <li> It does not explicitly show interpretable information such as the frequency content.</li>
   </ul>
 </div>
 
 <div>
-Let's play with different color models <a href="https://www.csfieldguide.org.nz/en/chapters/data-representation/images-and-colours/">here</a>!
+
+  <p> From raw waveform to spectrograms!</p>
+
 </div>
-  
-
-  <div> 
-    ✋ We can represent and visualize image data using Python with help from these Python libraries:
-    <br /> - <a href="https://pypi.org/project/pillow/">Pillow</a> for reading images into numbers, image processing and file saving.
-        <br /> - <a href="https://numpy.org/">Numpy</a> for handling numbers.
-       <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for visualizations.
-      <br /> - <a href="https://github.com/opencv/opencv">opencv</a> for more complex image processing.
-   </div>
-
-  <div> 
-        Creative examples of image data visualization
-  <p> - Most of the open public image datasets are from computer vision research which is a field of artificial intelligence (AI) that enables computers to interpret and understand the visual world (you'll explore these in the future units!)</p>
-    <ul>
-    <li> <a href="https://navigu.net/#imagenet">An image dataset browser</a>  </li> (ImageNet is a benchmark computer vision dataset. More datasets can be found in the browser's menu.)
-    <li> <a href="https://exposing.ai/datasets/">exposing.ai</a> which examines the content and the usage of public image datasets.</li>
-  </ul>
-     </div>
-  
-
-    <div> 
-   ✋Hands-on - let's write some code together!
-     <br /> - Open a new folder in VS Code.
-       <br /> - create a new .ipynb file and open it in VS code!
-      <br /> - Find an image (local or from the internet) and drop it into the working folder!
-      <br /> - Create a virtual python environment and activate it. (you can also re-use the one from last week!)
-      <br /> - pip install numpy, pillow, matplotlib and opencv-python accordingly.
-      
-   </div>
-
-  <div>
-  <h3>Loading Images in Python</h3>
-  <pre><code>
-from PIL import Image
-img = Image.open("example.jpg")
-img.show()
-  </code></pre>
-  <ul>
-    <li>Pillow (PIL fork) is great for basic image handling</li>
-    <li>Use <code>numpy.array(img)</code> to convert to a NumPy array</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Image as a NumPy Array</h3>
-  <pre><code>
-import numpy as np
-arr = np.array(img)
-print(arr.shape, arr.dtype)
-  </code></pre>
-  <b>Example output:</b> (256, 256, 3) uint8  
-  → 256×256 pixels, 3 color channels, each number is an 8-bit unsigned integer.
-</div>
-
-  <div>
-  <h3>Visualizing Images with Matplotlib</h3>
-  <pre><code>
-import matplotlib.pyplot as plt
-plt.imshow(arr)
-plt.axis('off')
-plt.show()
-  </code></pre>
-  <b>Tip:</b> Matplotlib automatically scales pixel values and handles RGB correctly.
-</div>
-
-  <div>
-  <h3>Grayscale Conversion</h3>
-  <pre><code>
-gray = img.convert('L')
-plt.imshow(gray, cmap='gray')
-plt.axis('off')
-plt.show()
-  </code></pre>
-  <b>‘L’ mode:</b> 8-bit pixels, black and white
-</div>
-
-  <div>
-  <h3>Splitting Color Channels</h3>
-  <pre><code>
-r, g, b = img.split()
-plt.imshow(r, cmap='Reds')
-  </code></pre>
-  <ul>
-    <li>Helps visualize color contribution per channel</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Pixel Statistics</h3>
-  <pre><code>
-print("Min:", arr.min(), "Max:", arr.max())
-print("Mean:", arr.mean())
-  </code></pre>
-  <ul>
-    <li>Useful for image normalization, thresholding, or analysis</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Basic Image Transformations</h3>
-  <pre><code>
-img_rot = img.rotate(45)
-img_flip = img.transpose(Image.FLIP_LEFT_RIGHT)
-  </code></pre>
-  <ul>
-    <li>Rotation, flipping, cropping are common preprocessing steps</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Visualization Techniques</h3>
-  <ul>
-    <li>Side-by-side comparisons using subplots</li>
-    <li>Color histograms for RGB intensity distribution</li>
-    <li>Heatmaps for attention or saliency visualization</li>
-  </ul>
-</div>
-
-  <div>
-  <h3>Plotting Color Histograms</h3>
-  <pre><code>
-for i, color in enumerate(['r','g','b']):
-    plt.hist(arr[:,:,i].ravel(), bins=256, color=color, alpha=0.5)
-plt.show()
-  </code></pre>
-</div>
-
-
-  <div>
-  <h3>OpenCV for Image Analysis</h3>
-  <ul>
-    <li>More advanced operations: edge detection, filters, contours</li>
-  </ul>
-  <pre><code>
-import cv2
-edges = cv2.Canny(arr, 100, 200)
-plt.imshow(edges, cmap='gray')
-  </code></pre>
-</div>
-
-  <div>
-  <h3>Visualizing Filters and Edges</h3>
-  <ul>
-    <li>Helps understand feature extraction in vision models</li>
-    <li>Examples: Sobel, Laplacian, Gaussian blur (Google these and try the code!)</li>
-  </ul>
-</div>
-
   
 <div>
-  <h3>Hands-On Practice</h3>
+  <h3>Time vs Frequency Domain</h3>
+  <p>- The waveform is the time-domain audio representation.</p>
+  <p>- Audio can also be described in terms of its frequency component.</p>
+  <p>- We use transformations (like the Fourier Transform) to move from time to time-frequency domain. (no worries about understanding the technical details here!)</p>
+</div>
+
+
+<div>
+  <h3>Fourier Transform</h3>
+  <p>- Decomposes a signal into a sum of sinusoids.</p>
+  <p>- Shows which frequencies are present and their amplitudes.</p>
+  <p>- Fast Fourier Transform (FFT) is the efficient version used in audio processing.</p>
+  <p>[optional] <a href="https://www.youtube.com/watch?v=spUNpyF58BY">A good YTB tutorial on Fourier Transform</a></p>
+</div>
+
+
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Spectrogram">Spectrogram</a></h3>
+  <p>A spectrogram shows how frequency content changes over time.</p>
   <ul>
-    <li>Load an image of your choice</li>
-    <li>Convert to grayscale and plot histogram</li>
-    <li>Apply edge detection and visualize results</li>
+    <li>x-axis: time</li>
+    <li>y-axis: frequency</li>
+    <li>color: amplitude or energy</li>
   </ul>
 </div>
 
 
-  
-  
-    <div> 
-    🕶️ What we have learnt today:
-      <br />
-    - How to represent digital images using numbers
-       <br /> - - RGB, RGBA, Greyscale
-    <br />
-    - ✋Hands-on project with Python: create a python environment AGAIN
- <br />
-   - ✋Hands-on project with Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a> for image I/O and simple processing
+<div>
+  <p>The technique behind extracting spectrogram from waveform: Short-Time Fourier Transform (STFT)</p>
+  <p>Audio is analyzed in short overlapping windows (frames).</p>
+  <p>Each window gives a spectrum → combined to form the spectrogram.</p>
+  <p>Provides both time and frequency resolution.</p>
+</div>
 
-    </div>
+
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Mel_scale">Mel Scale</a></h3>
+  <p>Human perception of pitch is not linear.</p>
+  <p>The Mel scale compresses high frequencies to match human hearing sensitivity.</p>
+  <p>Mel Spectrogram = frequency in spectrogram bins mapped to Mel scale.</p>
+  
+</div>
+
+
+<div>
+  <h3><a href="https://huggingface.co/learn/audio-course/en/chapter1/audio_data">Log-Mel Spectrogram</a></h3>
+  <p>Logarithmic scaling of energy values (closer to how humans perceive loudness).</p>
+  <p>Common input representation for deep audio models (e.g., <a href="https://openai.com/index/whisper/">Whisper from OpenAI</a>).</p>
+</div>
+
+
+<div>
+  <h3><a href="https://learn.flucoma.org/reference/mfcc/">MFCCs</a> – Mel-Frequency Cepstral Coefficients</h3>
+  <p>Compact representation of the spectral envelope of sound.</p>
+  <p>Derived from log-mel spectrogram.</p>
+  <p>Widely used in speech recognition and speaker identification.</p>
+</div>
+
+
+<div>
+  <h3>Other Common Audio Features</h3>
+  <ul>
+    <li>Spectral Centroid – "brightness" of sound</li>
+    <li>Chroma Features – energy distribution across musical pitches</li>
+    <li>RMS Energy – perceived loudness</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Good NEWS!🥰 </h3>
+   <p>In practice, we use simple code from libraries to extract spectrograms, log-mel spectrograms, MFCCs, and more from audio files.</p>
+  <ul>
+    <li>Librosa </li>
+    <li>Torchaudio</li>
+    <li>Madmom</li>
+    <li>Essentia</li>
+    <li>etc.</li>
+  </ul>
  
+</div>
+
+
+
+<div>
+  <h3>Go beyond! what we can do with these audio representations? </h3>
+  <p>Audio representations (features) become input to AI models for tasks like:</p>
+  <ul>
+    <li>Speech recognition (e.g. transcription for a YTB video)</li>
+    <li>Music genre classification</li>
+    <li>Emotion detection</li>
+   <li>and a lot more!</li>
+  </ul>
+ <p>More on this in your future units ;)</p>
+</div>
+
+<div>
+  <h3>Example: processing pipeline for applications like <a href="https://birdnet.cornell.edu/">bird net</a> (audio classification) </h3>
+  <ul>
+    <li>Load raw audio waveform from an audio file</li>
+    <li>Extract Mel Spectrogram or MFCCs</li>
+    <li>Feed into an AI model</li>
+    <li>Predict label (e.g., “magpie”, “raven”, “blue jay”)</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>Raw waveform is time-domain data</li>
+    <li>Apply a techinque called "Fourier transformatio"n to waveform to extract time-frequency-domain features</li>
+    <li> Spectrogram & > Mel Spectrogram & Log-Mel Spectrogram & MFCCs → perceptually meaningful representations</li>
+  </ul>
+</div>
+
+  
+
+  
+  <div>
+  <h2>Hands-on:  Audio representations〜🌊🌈</h2> 
+  <p>Commonly used Python libraries for extracting audio features are Librosa, Madmom and torchaudio. </p>
+  <p> <a href="https://wiki.cci.arts.ac.uk/books/how-to-guides/page/audio-files-with-librosa">Our CCI WIKI</a> for using Librosa to extract spectrograms. </p>
+  
+</div>
+
+  
+  
   <div> 
-    We'll see you next Tuesday same time and same place!
+     Homework:
+   <br />
+    - Start preparing for your <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1665529">final project</a>! 
+  <br />
+    - If you plan to work with content we have covered so far, send me a small proposal on what you plan to make and I'll recommend relevant resources!
+  <br />
+    - If you plan to work with content we have not covered so far, send me a message and I'll recommend early readings/preparation for you!
+  </div>
+  </div>
+  
+  <div> 
+    We'll see you next Tuesday same time and same place, for the guest lecture!!!
   </div>
   
 </body>

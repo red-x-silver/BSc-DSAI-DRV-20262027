@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,182 +32,306 @@
     <br />
     Lecture 06
     <br />
-    Introduction to charts for tabular data visualization in Python
+    Introduction to text data representation and visualization using Python
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
   
   <div> By the end of this lecture, we'll have learnt about:
   
-    <br /> - Detailed info about the final assessment 
-    <br /> - Different chart types for visualizing tabular data
-    <br /> - Make charts in Python
+    <br /> - how to represent text data numerically
+    <br /> - the pipeline for representing and visualizing text data: preprocess, tokenization, numerical representation for tokens
+    <br /> - how to use Python to represent and visualize text data, with help from some libraries!
    
   </div>
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
- 
-    <div> 
-        Let's walk through
-    <br />  the <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559494">detailed final submission document</a>    
-   from Moodle
-    </div>
-
-      <div> 
-        Has everyone installed <a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>?
-    </div>
-
-   <div> 
-        Has everyone installed <a href="https://www.anaconda.com/docs/getting-started/anaconda/install">anaconda</a>?
-    </div>
+  <div> Detailed final project document is out <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1665529">here</a>! 
+  <br /> Let's have a look.
+  </div>
   
-  <div> 
-        Tabular data - the history
- <br /> - Let's go to 
-    <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">this Python notebook for a tour of tabular data history</a>
+  
+   <div>😎how to use numbers to represent text?
+   <br /> -  today we'll see some fun text representation (e.g. word2vec) that could reveal fun relation between words like this:
+     <br /> vec("Paris") - vec("France") + vec("Germany") ≈ vec("Berlin")
    </div>
+  
+  <div>
+  <h3>📝Text Data</h3>
+  <ul>
+    <li>Text is one of the most common forms of human communication.</li>
+    <li>It can be reviews, documents, messages, articles, and chat logs, etc. </li>
+    <li>Unlike images in pixels, text does not have numeric structures — requires processing before analysis.</li>
+    <li>It is the foundation of <a href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> and Large Language Models.</li>
+  </ul>
+</div>
 
-  <div> 
-     Most common types of charts/plots for visualizing tabular data:
-      <br /> - <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
-       <br /> - <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
-      <br /> - <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
-    <br /> - <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
-    <br /> - <a href="https://en.wikipedia.org/wiki/Heat_map">Heatmaps</a>
-     <br /> - <a href="https://en.wikipedia.org/wiki/Area_chart">Area charts</a>
-     <br /> - <a href="https://www.chartjs.org/docs/latest/samples/line/multi-axis.html">Dual-Axis Charts</a>
+<div>
+  <h3>😶‍🌫️Challenges of Text Data</h3>
+  <ul>
+    <li>Ambiguity (same words → different meanings, different words → same meanings)</li>
+    <li>Sparsity (a lot of zeroes "wasted" in one-hot vectors)</li>
+    <li>Variability and diversity (Different languages, slang, grammar)</li>
+    <li>No inherent numeric structure (how to use numbers to represent text?) </li>
+  </ul>
+</div>
+<div>
+  <h3>😎Basic Representation: Tokens</h3>
+  <ul>
+    <li>Processing a long paragraph/sentence, which is usually one long string variable in our computers, is made easier by firstly breaking it into smaller pieces.</li>
+  </ul>
+</div>
+  
+<div>
+  <h3>😎Basic Representation: Tokens</h3>
+  <ul>
+  <li>Tokenization breaks text into smaller and "reuseble" units.</li>
+    <li>Tokenization could of at different levels - words as tokens, subwords as tokens, characters as tokens.</li>
+    <li>For example, "i ate an apple this morning" can be tokenized into: ["i", "ate", "an", "apple", "this", "morning"] (from the word-level tokenization).</li>    
+    <li>Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>, <a href="https://github.com/openai/tiktoken">OpenAI tiktoken</a>.</li>
+  </ul>
+</div>
+
+<div>😎If we can find a way to represent these tokens numerically, we can then "numberify" any text!</div>
+
+<div>✋Next: let's try some hands-on code examples for tokenization
+  <ul>
+  <li>Let's prepare a folder for this week's coding example!
+  <li>Let's open VSCode!
+  <li>Let's ceate a new python notebook in the folder!
+  <li>Let's run the notebook in VSCode!
+  <li>Let's re-use last week's python environment by selecting it! (or <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1778079">create a new environment</a> if you don't have one yet:)
+  </ul>
+</div>
+  
+<div>✋Next: let's try some hands-on code examples for tokenization
+  <ul>
+    <li>Let's pip install the libraries we are going to use today: 
+      <pre><code>
+   !pip install nltk spacy wordcloud scikit-learn networkx matplotlib
+  </code></pre>
+    <li> (the use of "!" above is recommended, but not mandentory if you put just the "pip install" in a code cell that does not contain any other python code.)
+  </ul>
+</div>
+
+  <div>
+  <h3>✋Demo: Tokenization (NLTK)</h3>
+  <pre><code>
+import nltk
+nltk.download('punkt_tab')
+from nltk.tokenize import word_tokenize
+
+text = "Text data is everywhere!" # this is an example text
+tokens = word_tokenize(text)
+print(tokens)
+  </code></pre>
+
+  <p>Tokenization is the first step in almost all text workflows.</p>
+</div>
+
+<div>
+  <h3>Common text preprocessing steps</h3>
+  <p>Usually there are some other steps before converting tokens into numbers.</p>
+  <ul>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/lowercasing-text-for-uniformity-in-nlp">Lowercasing</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/punctuating-punctuation-streamlining-text-for-nlp">Removing punctuation</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/demystifying-stop-words-in-natural-language-processing">Stopword removal</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/mastering-stemming-in-nlp-with-nltk">Stemming and Lemmatization</a></li>
+  </ul>
+  <p>note: you can also apply lowercasing and punctuation removal before tokenization!</p>
+</div>
+  
+<div>
+  <h3>✋Demo: Preprocessing with spaCy</h3>
+  <p>In a separated code cell, run:
+    <br /> !python -m spacy download en_core_web_sm</p>
+  <pre><code>
+
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+doc = nlp("Cats are running and jumped over fences.")
+tokens = [(token.text, token.lemma_) for token in doc]
+print(tokens)
+  </code></pre>
+
+  <p>Lemma → base form of words (running → run).</p>
+</div>
+
+  <div>😎Now we have the nice pre-processed and tokenized text, let's find out how to represent text numerically!</div>
+  
+<div>
+  <h3>Several ways to represent text numerically</h3>
+  <ul>
+    <li><a href="https://medium.com/analytics-vidhya/one-hot-encoding-of-text-data-in-natural-language-processing-2242fefb2148">One-hot vectors</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Bag-of-words_model">Bag-of-Words (BoW)</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF–IDF</a> (term frequency–inverse document frequency)</li>
+    <li><a href="https://en.wikipedia.org/wiki/Word_embedding">Word embeddings</a> (Word2Vec, GloVe)</li>
+    <li><a href="">Transformer-based embeddings (more on this in future AI units)</a></li>
+  </ul>
+</div>
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Bag-of-words_model">Bag-of-Words (BoW)</a></h3>
+  <ul>
+    <li>Counts word occurrences in a document.</li>
+    <li>Simple, interpretable, sparse.</li>
+    <li>No order or grammar information.</li>
+  </ul>
+</div>
+<div>
+  <h3>✋Demo: Bag-of-Words (sklearn)</h3>
+  <pre><code>
+from sklearn.feature_extraction.text import CountVectorizer
+
+docs = ["cats drink milk", "dogs drink water"]
+vec = CountVectorizer()
+X = vec.fit_transform(docs)
+
+print(vec.get_feature_names_out())
+print(X.toarray())
+  </code></pre>
+</div>
+  
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF–IDF</a></h3>
+  <p>Weights words by importance, not just frequency.</p>
+  <ul>
+    <li>TF → how often a word appears</li>
+    <li>IDF → how rare it is across documents</li>
+    <li>Downweights common words (“the”, “of”, “and”)</li>
+  </ul>
+</div>
+<div>
+  <h3>✋Demo: TF–IDF</h3>
+  <pre><code>
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+docs = ["machine learning is fun", "deep learning is interesting"]
+tfidf = TfidfVectorizer()
+X = tfidf.fit_transform(docs)
+
+print(tfidf.get_feature_names_out())
+print(X.toarray())
+  </code></pre>
+</div>
+  
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Word_embedding">Word embeddings</a></h3>
+  <p>Dense vector representations where:</p>
+  <ul>
+    <li>Similar words have similar vectors.</li>
+    <li>Capture semantic meaning.</li>
+    <li>Examples: <a href="https://jalammar.github.io/illustrated-word2vec/">Word2Vec</a>, GloVe, FastText.</li>
+  </ul>
+</div>
+
+    <div>😎fun equations from common word2vec embeddings:
+   <br />  vec("brother") - vec("man") + vec("woman") ≈ vec("sister")
+     <br />  vec("Paris") - vec("France") + vec("Germany") ≈ vec("Berlin")
    </div>
+  
 
-  <div> 
-      We can visualize tabular data using Python with help from these Python libraries:
-    <br /> - <a href="https://github.com/pandas-dev/pandas">Numpy</a> for handling large multi-dimensional arrays, and carrying out numerical computing
-        <br /> - <a href="https://github.com/pandas-dev/pandas">Pandas</a> for reading and processing tabular data
-       <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for creating static, animated, and interactive visualizations.
-      <br /> - <a href="https://seaborn.pydata.org/">seaborn</a> (based on matplotlib) for providing a high-level interface for drawing attractive and informative statistical graphics.
-   </div>
+  <div>
+ Let's use a realistic text dataset for demonstrating word2vec text representation!
+ <br /> - the dataset: <a href="https://www.kaggle.com/datasets/quora/question-pairs-dataset/">Question Pairs Dataset</a> 
+<br /> - this is a csv file, put it into today's working folder (where our python notebook is) and let's explore it briefly!
+</div> 
+ 
+  
+<div>
+  <h3>✋ Demo: word2vec</h3>
+  <p>Useful for showing clusters of similar words.</p>
+ <p>let's use some help from a library called "genism": !pip install gensim</p>
+  <p> - downlaod the prepared notebook <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1566884">here</a>, copy the cells under "Chapter 2" into your notebook and run them!</p>
 
+</div>
 
-<div> 
-        Creative examples of tabular data visualization
+  <div>
+ Note: word2vec is a worth-exploring topic, which also requires a little bit more deep learning understanding.
+ <br />  <a href="https://remykarem.github.io/word2vec-demo/">Here</a> is a web demo for word2vec and t-sne visualization training, with recommended learning resources listed in the "reference" section.
+</div>  
+  
+  
+    <div> 
+        Examples of text datasets
+  <p> - Text data could appear in different contexts - literature, official documents, prepared Q&A, forums like reddit, or video captions, etc. </p>
     <ul>
-    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a>  </li>
-    <li> <a href="https://waitbutwhy.com/2014/05/life-weeks.html">Your life in weeks</a> </li>
-    <li> <a href="https://truth-and-beauty.net/">works from data artist Moritz Stefaner</a> </li>
-    <li> <a href="https://www.nathaliemiebach.com/">works from data artist Nathalie Miebach</a> </li>
+    <li> <a href="https://huggingface.co/datasets?modality=modality:text&sort=trending">text dataset on Hugging Face</a>  </li>
+    <li> a platform for <a href="https://github.com/ad-freiburg/large-qa-datasets">Q&A datasets</a> </li>
+      <li> <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">IMDB dataset having 50K movie reviews</a> </li>
   </ul>
      </div>
   
-    <div> 
-     <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
-      <br /> - Best for <b>comparing values across categories</b>. Bar charts provide a clear visual distinction between groups. 
-    <br /> - Use horizontal bars when category names are long or there are many categories. 
-    <br /> - Use vertical bars when showing time progression. It aligns naturally with how we read trends and values over time.
-    <br /> - Variants include stacked bar charts, grouped bar charts, etc.
-     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/index.html#lines-bars-and-markers">bar charts from Matplotlib</a> with <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/bar_label_demo.html#sphx-glr-gallery-lines-bars-and-markers-bar-label-demo-py">a code example</a>! 
-   </div>
+<div>
+  <h3>✋Demo: Word Cloud Visualization</h3>
+  <p>Displays most frequent words based on size.</p>
+   <p>Let's take a look at the cell from the prepared notebook!</p>
   
-  <div> 
-     <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
-      <br /> - Best for showing <b>trends over time and identifying fluctuations</b>.  
-    <br /> - Choose a line chart over a bar chart for time-series data, because it emphasizes continuity and makes trends easier to spot.
-     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html#sphx-glr-gallery-lines-bars-and-markers-simple-plot-py">line charts from Matplotlib</a>(with synthesized random data) ! 
-   </div>
-
-   <div> 
-     <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
-      <br /> - Best for <b>showing parts of a whole</b>. For example, percentage of sales by product category or market share by major players. 
-     <br /> - Pie charts are simple and effective for illustrating proportions. If precision is important or the data has many categories, use a bar chart instead.
-     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html#">pie charts from Matplotlib</a> (with synthesized random data)! 
-   </div>
-
-   <div> 
-    <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
-     <br /> - Best for exploring <b>relationships between two variables</b>. For example marketing spend vs. customer acquisition. 
-     <br /> - Scatter plots help identify correlations or outliers in data. Use for more in-depth analysis.
-     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py">scatter plots from Matplotlib</a> (with synthesized random data) ! 
-   </div>
-
-   <div> 
-   <a href="https://en.wikipedia.org/wiki/Heat_map">Heatmaps</a>
-      <br /> -Best for visualizing intensity or density across categories or time. For example, customer activity by hour and day. 
-      <br /> - Heatmaps use color to represent data values, making it easy to spot patterns or anomalies.
-      <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/image_annotated_heatmap.html">heatmaps from Matplotlib</a> (with synthesized random data) ! 
-   </div>
+</div>
+<div>
+  <h3>Co-occurrence Graphs</h3>
+  <ul>
+    <li>Visualize which words appear together.</li>
+    <li>Great for topic exploration.</li>
+  </ul>
+</div>
   
-   <div> 
-      How about <a href="https://seaborn.pydata.org/">seaborn</a>? 
-        <br /> - It is based on Matplotlib, very familiar syntax (but with more interesting aesthetics imo). 
-      <br /> ✋Let's check <a href="https://seaborn.pydata.org/examples/index.html">some examples from seaborn</a> on the chart types we have covered using Matplotlib.
-   </div>
+<div>
+  <h3>✋Demo: Co-occurrence Graph</h3>
+  <p>Let's take a look at the cell from the prepared notebook!</p>
+</div>
   
-
-
-  <div> 
-    So far we have been using mostly random and small-scale tabular data (synthesized using Numpy)!
-    <br /> - how about some real tabular data?
-   <br /> - It will be a combination of Matplotlib/Seaborn and Pandas, where the latter handles the tabular data importing and processing.
-   </div>
-
+<div>
+  <h3>[optional] Classical embedding → Modern transformer embeddings</h3>
+   <p>Text representations from a more advanced deep learning technique.</p>
+  <ul>
+    <li>Before: BoW, TF–IDF, Word2Vec</li>
+    <li>Now: Transformer embeddings (<a href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a>, GPT)</li>
+    <li>Meaning is encoded contextually, not statically.</li>
+  </ul>
+</div>
+<div>
+  <h3>[optional]How Transformers Represent Text</h3>
+  <ul>
+    <li>Tokenization → subword units (byte-pair encoding)</li>
+    <li>Vector embedding for each token</li>
+    <li>Self-attention captures relationships across tokens</li>
+    <li>Final output = contextual embeddings</li>
+  </ul>
+</div>
   
-    <div> 
-    <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1561680">Here</a> is a demo project for visualizing Iris dataset, using Python libraries Pandas and Matplotlib.
-     <br /> - Download the zip and unzip it.
-      <br /> - We'll start from creating a Python virtual environment!
-      <br /> - This prevents conflicts between packages and ensures that your projects are reproducible.
-       <br /> - It may seem like an extra step but is a necessary step for almost every fancy python-based DS&AI project you are going to play with in the future!
-   </div>
-
-  <div>
-  <h3>Let me demonstrate how to create a virtual python environment in VSCode!</h3>
+<div>
+  <h3>🕶️ What we have learnt today:</h3>
+  <ul>
+    <li>The pipeline for representing any piece of text using numbers: pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings </li>
+    <li>Classic representations: BoW, TF–IDF.</li>
+    <li>Modern representations: embeddings like word2vec, transformers.</li>
+    <li>Text visualization methods: word cloud, co-occurrence graph</li>
+    <li>✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a></li>
+    <li>✋Hands-on practice on how to train a word2vec embedding on a text dataset, and compute word similarity based on the trained word2vec</li>
+  </ul>
 </div>
 
-   <div>
- <h3>Setup Python environment</h3>
-  <p> Let's create a new python environment!  </p> 
-  <p>- different ways to do this as listed <a href="https://code.visualstudio.com/docs/python/environments">here</a> </p>
-  <p>1. via VSCode command line </p>
-  <p>2. (classic) via terminal and conda </p>
-</div>
-
-     <div>
-<h3>Setup Python environment - I'll demo</h3>
-  <p> 1. open terminal from VSCode </p> 
-  <p> 2. the hacky commands  "cd" "pwd" "ls"!! (I'll demo) let's use them to navigate into the folder containing the code for iris data visualization  </p> 
-  <p> 3. run this: conda create --name iris --file requirements.txt</p>
-  <p>4. run this: conda activate iris </p>
-  <p> did you see the (iris) appearing in the terminal?😘 </p>
-</div>
-
-     <div>
- <h3>Your turn 😎</h3>
-  <p> Run the cells one by one!🕶️ </p> 
-  <p>- (first time running the cell you might get a pop-up message saying "ipykernel" needs to be installed - just click on the install and it will start installing automatically!)</p>
-  <p> Give the comments in code a read 🕶️</p> 
-</div>
-
-  
-
-
-  
-    <div> 
-    🕶️ What we have learnt today:
-      <br />
-    - 📊📈📉Charts:
-       <br /> - - Line, Bar, Pie, Scatter, Heatmaps, Area, Dual-axis  
-    <br />
-    - ✋Hands-on project with Python: create a python environment! (useful for your future Python projects beyond today's lecture) 
- <br />
-   - ✋Hands-on project with Python libraries: pandas, <a href="https://matplotlib.org/stable/gallery/index.html">Matplotlib</a>, <a href=" https://seaborn.pydata.org/examples/index.html">seaborn</a>
-       <br />
-      - a practical guide for good data visualization design <a href="https://medium.com/design-bootcamp/data-visualization-and-dashboard-design-case-study-c639da21e4c9">here</a> 
-   <br />  
-    -  <a href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">choosing colormaps in Matplotlib</a>
-    </div>
  
+
+  <div> 
+     Homework:
+   <br />
+    - Start preparing for your <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559494">final project</a>! 
+  <br />
+    - If you plan to work with content we have covered so far, send me a small proposal on what you plan to make and I'll recommend relevant resources!
+  <br />
+    - If you plan to work with content we have not covered so far, send me a message and I'll recommend early readings/preparation for you!
+  </div>
+  </div>
+  
   <div> 
     We'll see you next Tuesday same time and same place!
   </div>
   
 </body>
 </html>
+
+  
+  
